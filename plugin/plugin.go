@@ -286,6 +286,7 @@ func (p *plugin) generateProto3Message(file *generator.FileDescriptor, message *
 		if fieldValidator == nil && !field.IsMessage() {
 			continue
 		}
+		p.P(fmt.Sprintf("/// %s", field))
 		isOneOf := field.OneofIndex != nil
 		fieldName := p.GetOneOfFieldName(message, field)
 		variableName := "this." + fieldName
